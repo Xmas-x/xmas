@@ -6,7 +6,7 @@
     <meta name="description" content="Xmas Token - The Christmas Crypto">
     <meta name="author" content="Xmas">
     <meta name="keywords" content="Xmas, Crypto, Christmas, 🎅, Token">
-    <title>Xmas Token</title>
+    <title>Xmas</title>
     <link rel="icon" type="image/png" href="https://i.ibb.co/y5258Gz/santa.png">
 
     <!-- Google Fonts -->
@@ -95,6 +95,46 @@
             animation-delay: 5s;
         }
 
+        /* Center Content Styling */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .token-symbol {
+            font-size: 4rem;
+            font-family: 'Pacifico', cursive;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        .token-address {
+            font-size: 1.5rem;
+            font-family: 'Caveat', sans-serif;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        .buy-button {
+            display: inline-block;
+            font-family: 'Pacifico', cursive;
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .buy-button:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
     </style>
 </head>
 <body>
@@ -111,8 +151,11 @@
     </div>
 
     <!-- Main Content -->
-    <h1>Xmas Token 🎅</h1>
-    <h2>Celebrate the Christmas Crypto Season with Xmas Token!</h2>
+    <div class="content">
+        <h1 class="token-symbol">$🎅</h1>
+        <h2 class="token-address">solxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxpump</h2>
+        <a href="#" class="buy-button">Buy $🎅</a>
+    </div>
 
 </body>
 </html>
