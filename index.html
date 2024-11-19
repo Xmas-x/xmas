@@ -1,63 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xmas</title>
-    <!-- Favicon -->
+    <meta name="description" content="Xmas Token - The Christmas Crypto">
+    <meta name="author" content="Xmas">
+    <meta name="keywords" content="Xmas, Crypto, Christmas, 🎅, Token">
+    <title>Xmas Token</title>
     <link rel="icon" type="image/png" href="https://i.ibb.co/y5258Gz/santa.png">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffebe0;
+            color: #333;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        h1 {
+            color: #e74c3c;
+            font-size: 3rem;
+            margin-top: 50px;
         }
 
-        header {
-            background-color: #007bff;
-            color: white;
-            padding: 20px 0;
+        h2 {
+            color: #2c3e50;
+            font-size: 2rem;
         }
 
-        main {
-            padding: 40px;
+        .snowflakes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
         }
 
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-            position: fixed;
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background: #fff;
+            border-radius: 50%;
+            animation: snowflakes 10s linear infinite;
+        }
+
+        @keyframes snowflakes {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        #game-container {
+            width: 100%;
+            height: 200px;
+            background-color: #b2bec3;
+            position: relative;
+        }
+
+        .dino {
+            position: absolute;
+            bottom: 20px;
+            left: 50px;
+            font-size: 40px;
+        }
+
+        .obstacle {
+            position: absolute;
+            bottom: 20px;
+            font-size: 40px;
+        }
+
+        .ground {
+            position: absolute;
             bottom: 0;
             width: 100%;
+            height: 20px;
+            background-color: #2d3436;
         }
 
-        a {
-            color: #007bff;
-            text-decoration: none;
+        /* Snowflake styles */
+        .snowflake-1 {
+            width: 10px;
+            height: 10px;
+            animation-duration: 8s;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .snowflake-2 {
+            width: 12px;
+            height: 12px;
+            animation-duration: 12s;
         }
+
+        .snowflake-3 {
+            width: 15px;
+            height: 15px;
+            animation-duration: 10s;
+        }
+
     </style>
 </head>
-
 <body>
-    <header>
-        <h1>Welcome to My Website</h1>
-    </header>
-    <main>
-        <p>This is a simple static website to test GitHub Pages setup.</p>
-        <p>Visit my <a href="https://github.com/" target="_blank">GitHub Profile</a>.</p>
-    </main>
-    <footer>
-        <p>&copy; 2024 My Simple Website</p>
-    </footer>
+
+    <!-- Snowflakes Animation -->
+    <div class="snowflakes">
+        <div class="snowflake snowflake-1"></div>
+        <div class="snowflake snowflake-2"></div>
+        <div class="snowflake snowflake-3"></div>
+        <div class="snowflake snowflake-1"></div>
+        <div class="snowflake snowflake-2"></div>
+        <div class="snowflake snowflake-3"></div>
+    </div>
+
+    <!-- Main Content -->
+    <h1>Xmas Token 🎅</h1>
+    <h2>Celebrate the Christmas Crypto Season with Xmas Token!</h2>
+
+    <!-- Dino Game -->
+    <div id="game-container">
+        <div class="ground"></div>
+        <div id="dino" class="dino">🦌</div>
+        <div id="obstacle" class="obstacle">⛄</div>
+        <div id="sky-obstacle" class="obstacle">❄️</div>
+    </div>
+
+    <script>
+        // Snowflake Animation Logic
+        const snowflakes = document.querySelectorAll('.snowflake');
+        snowflakes.forEach(snowflake => {
+            let x = Math.random() * window.innerWidth;
+            let size = Math.random() * 5 + 5;
+            let duration = Math.random() * 10 + 8;
+            snowflake.style.left = `${x}px`;
+            snowflake.style.width = `${size}px`;
+            snowflake.style.height = `${size}px`;
+            snowflake.style.animationDuration = `${duration}s`;
+        });
+
+        // Dino Game Logic
+        const dino = document.getElementById('dino');
+        const obstacle = document.getElementById('obstacle');
+        const skyObstacle = document.getElementById('sky-obstacle');
+        let dinoJumping = false;
+        let gameSpeed = 3;
+
+        // Dino Jump Function
+        document.addEventListener('keydown', (event) => {
+            if (event.code === 'Space' && !dinoJumping) {
+                dinoJumping = true;
+                dino.style.animation = 'jump 0.5s ease-out forwards';
+                setTimeout(() => {
+                    dinoJumping = false;
+                    dino.style.animation = '';
+                }, 500);
+            }
+        });
+
+        // Game Loop
+        function gameLoop() {
+            let obstacleLeft = parseInt(window.getComputedStyle(obstacle).left);
+            let skyObstacleLeft = parseInt(window.getComputedStyle(skyObstacle).left);
+
+            // Move the obstacles
+            obstacle.style.left = `${obstacleLeft - gameSpeed}px`;
+            skyObstacle.style.left = `${skyObstacleLeft - gameSpeed}px`;
+
+            // Reset obstacles position if they go off-screen
+            if (obstacleLeft <= -50) {
+                obstacle.style.left = `${window.innerWidth + 50}px`;
+            }
+
+            if (skyObstacleLeft <= -50) {
+                skyObstacle.style.left = `${window.innerWidth + 50}px`;
+            }
+
+            // Detect collision (simple)
+            if (obstacleLeft <= 150 && obstacleLeft >= 100 && !dinoJumping) {
+                alert('Game Over! 🎅');
+                window.location.reload();
+            }
+
+            if (skyObstacleLeft <= 150 && skyObstacleLeft >= 100 && !dinoJumping) {
+                alert('Game Over! 🎅');
+                window.location.reload();
+            }
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        gameLoop();
+
+        // CSS Jump Animation for Dino
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes jump {
+                0% { transform: translateY(0); }
+                50% { transform: translateY(-100px); }
+                100% { transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
 </body>
-
 </html>
-
