@@ -4,14 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Xmas Token - The Christmas Crypto">
-    <meta name="author" content="Xmas">
-    <meta name="keywords" content="Xmas, Crypto, Christmas, 🎅, Token">
     <title>Xmas</title>
-    <link rel="icon" type="image/png" href="https://i.ibb.co/y5258Gz/santa.png">
-
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Caveat:wght@700&display=swap" rel="stylesheet">
-
+    <link rel="icon" type="image/png" href="https://i.ibb.co/y5258Gz/santa.png">
     <style>
         body {
             margin: 0;
@@ -20,26 +15,9 @@
             color: #333;
             text-align: center;
             overflow: hidden;
-            position: relative;
-        }
-        
-        h1 {
-            color: #e74c3c;
-            font-family: 'Pacifico', cursive;
-            font-size: 4rem;
-            margin-top: 50px;
         }
 
-        h2 {
-            color: #2c3e50;
-            font-size: 2.5rem;
-            font-family: 'Caveat', sans-serif;
-        }
-
-
-
-
-
+        /* Snowflakes */
         .snowflakes {
             position: absolute;
             top: 0;
@@ -59,78 +37,50 @@
         }
 
         @keyframes snowflakes {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-            }
+            0% { transform: translateY(0) rotate(0); }
+            100% { transform: translateY(100vh) rotate(360deg); }
         }
 
-        .snowflake-1 {
-            left: 5%;
-            width: 15px;
-            height: 15px;
-            animation-duration: 12s;
-            animation-delay: 2s;
+        /* Main Section */
+        .main-section h1 {
+            color: #e74c3c;
+            font-size: 4rem;
+            font-family: 'Pacifico', cursive;
+            margin-top: 50px;
         }
 
-        .snowflake-2 {
-            left: 30%;
-            width: 20px;
-            height: 20px;
-            animation-duration: 15s;
-            animation-delay: 1s;
+        .main-section h2 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-family: 'Caveat', sans-serif;
         }
 
-        .snowflake-3 {
-            left: 70%;
-            width: 10px;
-            height: 10px;
-            animation-duration: 20s;
-            animation-delay: 3s;
-        }
-        
-        .snowflake-4 {
-            left: 90%;
-            width: 25px;
-            height: 25px;
-            animation-duration: 18s;
-            animation-delay: 5s;
-        }
-
-        /* Center Content Styling */
+        /* Center Content */
         .content {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
+            z-index: 1000;
         }
 
-        .token-symbol {
+        .content .token-symbol {
             font-size: 4rem;
-            font-family: 'Pacifico', cursive;
             color: #e74c3c;
-            margin-bottom: 10px;
         }
 
-        .token-address {
+        .content .token-address {
             font-size: 1.5rem;
-            font-family: 'Caveat', sans-serif;
             color: #34495e;
-            margin-bottom: 20px;
         }
 
         .buy-button {
-            display: inline-block;
-            font-family: 'Pacifico', cursive;
             background-color: #e74c3c;
             color: #fff;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
@@ -138,32 +88,33 @@
             background-color: #c0392b;
             transform: scale(1.05);
         }
-
     </style>
 </head>
 <body>
+    <div class="snowflakes"></div>
 
-    <!-- Snowflakes Animation -->
-    <div class="snowflakes">
-        <div class="snowflake snowflake-1"></div>
-        <div class="snowflake snowflake-2"></div>
-        <div class="snowflake snowflake-3"></div>
-        <div class="snowflake snowflake-1"></div>
-        <div class="snowflake snowflake-2"></div>
-        <div class="snowflake snowflake-3"></div>
-        <div class="snowflake snowflake-4"></div>
+    <div class="main-section">
+        <h1>Xmas Token 🎅</h1>
+        <h2>Celebrate the Christmas Crypto Season with Xmas Token!</h2>
     </div>
 
-    <!-- Center Content -->
     <div class="content">
         <h3 class="token-symbol">$🎅</h3>
         <h4 class="token-address">solxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxpump</h4>
         <a href="#" class="buy-button">Buy $🎅</a>
     </div>
 
-    <!-- Main Content -->
-    <h1>Xmas Token 🎅</h1>
-    <h2>Celebrate the Christmas Crypto Season with Xmas Token!</h2>
-
+    <script>
+        const snowflakesContainer = document.querySelector('.snowflakes');
+        for (let i = 0; i < 20; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.style.left = Math.random() * 100 + '%';
+            snowflake.style.animationDuration = 5 + Math.random() * 5 + 's';
+            snowflake.style.width = snowflake.style.height = 5 + Math.random() * 15 + 'px';
+            snowflakesContainer.appendChild(snowflake);
+        }
+    </script>
 </body>
 </html>
+
