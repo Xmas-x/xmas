@@ -16,8 +16,7 @@
             text-align: center;
             overflow: hidden;
         }
-
-        /* Snowflakes */
+        /* ca:solxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxpump*/
         .snowflakes {
             position: absolute;
             top: 0;
@@ -41,7 +40,6 @@
             100% { transform: translateY(100vh) rotate(360deg); }
         }
 
-        /* Main Section */
         .main-section h1 {
             color: #e74c3c;
             font-size: 4rem;
@@ -55,7 +53,6 @@
             font-family: 'Caveat', sans-serif;
         }
 
-        /* Center Content */
         .content {
             position: absolute;
             top: 50%;
@@ -88,6 +85,85 @@
             background-color: #c0392b;
             transform: scale(1.05);
         }
+
+        .cute-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1001;
+        }
+
+        .cute-buttons button {
+            width: 50px;
+            height: 50px;
+            background-color: transparent;
+            background-size: cover;
+            background-position: center;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .cute-buttons button:hover {
+            transform: scale(1.2);
+        }
+
+        .cute-buttons .button1 {
+            background-image: url('https://i.ibb.co/59p9Y6F/5l-Y42e-Hs-400x400.jpg');
+        }
+
+        .cute-buttons .button2 {
+            background-image: url('https://i.ibb.co/YB29nyX/pump-fun.png');
+        }
+
+        .coming-soon-container {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+            color: #e74c3c;
+           letter-spacing: 0.2rem;
+           overflow: hidden;
+       }
+
+       .coming-soon-letter {
+           display: inline-block;
+           opacity: 0;
+           transform: translateY(20px);
+           animation: floatIn 1.5s ease-in-out forwards;
+       }
+
+       .coming-soon-space {
+           width: 1rem; 
+           display: inline-block;
+       }
+
+       @keyframes floatIn {
+       0% {
+           opacity: 0;
+           transform: translateY(20px);
+       }
+       100% {
+           opacity: 1;
+           transform: translateY(0);
+       } 
+       }
+
+      .coming-soon-letter:nth-child(1) { animation-delay: 0.1s; }
+      .coming-soon-letter:nth-child(2) { animation-delay: 0.2s; }
+      .coming-soon-letter:nth-child(3) { animation-delay: 0.3s; }
+      .coming-soon-letter:nth-child(4) { animation-delay: 0.4s; }
+      .coming-soon-letter:nth-child(5) { animation-delay: 0.5s; }
+      .coming-soon-letter:nth-child(6) { animation-delay: 0.6s; }
+      .coming-soon-letter:nth-child(7) { animation-delay: 0.7s; }
+      .coming-soon-letter:nth-child(8) { animation-delay: 0.8s; }
+      .coming-soon-letter:nth-child(9) { animation-delay: 0.9s; }
+      .coming-soon-letter:nth-child(10) { animation-delay: 1s; }
+
     </style>
 </head>
 <body>
@@ -104,7 +180,28 @@
         <a href="https://pump.fun" class="buy-button">Buy $🎅</a>
     </div>
 
-    <script>
+    <div class="cute-buttons">
+       <a href="https://x.com/Xmasonsolana" target="_blank">
+        <button class="button1"></button></a>
+    <a href="https://pump.fun" target="_blank">
+        <button class="button2"></button></a>
+    </div>
+
+    <div class="coming-soon-container">
+    <span class="coming-soon-letter">C</span>
+    <span class="coming-soon-letter">O</span>
+    <span class="coming-soon-letter">M</span>
+    <span class="coming-soon-letter">I</span>
+    <span class="coming-soon-letter">N</span>
+    <span class="coming-soon-letter">G</span>
+    <span class="coming-soon-space"></span>
+    <span class="coming-soon-letter">S</span>
+    <span class="coming-soon-letter">O</span>
+    <span class="coming-soon-letter">O</span>
+    <span class="coming-soon-letter">N</span>
+    </div>
+
+<script>
         const snowflakesContainer = document.querySelector('.snowflakes');
         for (let i = 0; i < 20; i++) {
             const snowflake = document.createElement('div');
@@ -117,4 +214,3 @@
     </script>
 </body>
 </html>
-
